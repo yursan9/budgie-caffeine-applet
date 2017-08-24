@@ -1,0 +1,74 @@
+#!/usr/bin/env python3
+import gettext
+import gi
+gi.require_version('Gtk', '3.0')
+gi.require_version('Budgie', '1.0')
+from gi.repository import Budgie, Gdk, Gio, GObject, Gtk
+
+POWER_SCHEME = "org.gnome.settings-daemon.plugins.power"
+
+class BudgieCaffeine(GObject.Object, Budgie.Plugin):
+    __gtype_name__ = "@PROJECT_NAME@"
+
+    def __init__(self):
+        GObject.Object.__init__(self)
+        loc = gettext.translation("@PROJECT_NAME@", fallback=True)
+        loc.install("@PROJECT_NAME@")
+
+    def do_get_panel_widget(self, uuid):
+        return CaffeineApplet(uuid)
+
+class CaffeineApplet(Budgie.Applet):
+    manager = None
+    default = {}
+
+    def __init__(self, uuid):
+        Budgie.Applet.__init__(self)
+        self.power_settings = Gio.Settings(POWER_SCHEME)
+
+	    # Button Trigger
+        self.box = Gtk.EventBox()
+        icon = Gtk.Image.new_from_icon_name("caffeine-cup-empty",
+            Gtk.IconSize.BUTTON)
+        self.box.add(icon)
+        self.add(self.box)
+
+        # Popover
+        self.popover = Budgie.Popover.new(self.box)
+        layout = Gtk.Box()
+        layout.set_border_width(6)
+        label = Gtk.Label("Caffeine Mode")
+        layout.pack_start(label, False, True, 6)
+        self.switch = Gtk.Switch()
+        layout.pack_end(self.switch, False, True, 6)
+        self.popover.add(layout)
+
+        self.popover.get_child().show_all()
+        self.box.show_all()
+        self.show_all()
+
+        # Connect Callback
+        self.box.connect("button-press-event", self._on_press)
+
+    def fetch_default(self):
+        self.defaults = {
+            'idle-dim': self.power_settings.get_boolean('idle-dim'),
+            'sleep-inactive-ac-type': self.power_settings.get_string(
+                'sleep-inactive-ac-type'),
+            'sleep-inactive-battery-type': self.power_settings.get_string(
+                'sleep-inactive-battery-type')
+        }
+
+    def do_update_popovers(self, manager):
+        manager.register_popover(self.box, self.popover)
+        self.manager = manager
+
+    def	_on_press(self, box, e):
+        if e.button != 1:
+            return Gdk.EVENT_PROPAGATE
+
+        if self.popover.get_visible():
+            self.popover.hide()
+        else:
+            self.manager.show_popover(self.box)
+        return Gdk.EVENT_STOP
