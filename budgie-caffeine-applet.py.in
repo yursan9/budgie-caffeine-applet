@@ -68,10 +68,22 @@ class CaffeineApplet(Budgie.Applet):
     def _on_caffeine_on(self, switch, params):
         self.box.remove(self.icon)
         if switch.get_active():
+            self.power_settings.set_boolean('idle-dim',
+                                            False)
+            self.power_settings.set_string('sleep-inactive-ac-type',
+                                           'nothing')
+            self.power_settings.set_string('sleep-inactive-battery-type',
+                                           'nothing')
             self.icon = Gtk.Image.new_from_icon_name("caffeine-cup-full",
                 Gtk.IconSize.BUTTON)
             self.box.add(self.icon)
         else:
+            self.power_settings.set_boolean('idle-dim',
+                    self.defaults.get('idle-dim'))
+            self.power_settings.set_string('sleep-inactive-ac-type',
+                    self.defaults.get('sleep-inactive-ac-type'))
+            self.power_settings.set_string('sleep-inactive-battery-type',
+                    self.defaults.get('sleep-inactive-battery-type'))
             self.icon = Gtk.Image.new_from_icon_name("caffeine-cup-empty",
                 Gtk.IconSize.BUTTON)
             self.box.add(self.icon)
