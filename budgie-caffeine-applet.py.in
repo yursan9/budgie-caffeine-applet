@@ -19,12 +19,33 @@ class BudgieCaffeine(GObject.Object, Budgie.Plugin):
     def do_get_panel_widget(self, uuid):
         return CaffeineApplet(uuid)
 
+class CaffeineSettings(Gtk.Grid):
+    def __init__(self, setting):
+        super().__init__()
+        self.setting = setting
+
+        label = Gtk.Label("Enable Notification")
+        self.add(label)
+        notify_switch = Gtk.Switch(halign=Gtk.Align.END, hexpand=True)
+        self.attach(notify_switch, 1, 0, 1, 1)
+
+        setting.bind("enable-notification", notify_switch, "active",
+                          Gio.SettingsBindFlags.DEFAULT)
+        self.show_all()
+
 class CaffeineApplet(Budgie.Applet):
     manager = None
     defaults = {}
 
     def __init__(self, uuid):
         Budgie.Applet.__init__(self)
+        self.uuid = uuid
+
+        # Ensure schema and prefix is set properly
+        self.set_settings_prefix("/com/github/yursan9/budgie-caffeine-applet")
+        self.set_settings_schema("com.github.yursan9.budgie-caffeine-applet")
+        self.settings = self.get_applet_settings(self.uuid)
+
         self.power_settings = Gio.Settings(POWER_SCHEME)
         self.lock_settings = Gio.Settings(LOCKSCREEN_SCHEME)
         self.fetch_default()
@@ -63,6 +84,11 @@ class CaffeineApplet(Budgie.Applet):
                 'sleep-inactive-battery-type'),
             'lock-enabled': self.lock_settings.get_boolean('lock-enabled')
         }
+    def do_get_settings_ui(self):
+        return CaffeineSettings(self.get_applet_settings(self.uuid))
+
+    def do_supports_settings(self):
+        return True
 
     def do_update_popovers(self, manager):
         manager.register_popover(self.box, self.popover)
@@ -72,6 +98,9 @@ class CaffeineApplet(Budgie.Applet):
         self.box.remove(self.icon)
         if switch.get_active():
             self.power_settings.set_boolean('idle-dim',
+            # Send notification if enabled
+            if self.settings.get_boolean("enable-notification"):
+                pass
                                             False)
             self.power_settings.set_string('sleep-inactive-ac-type',
                                            'nothing')
@@ -92,6 +121,9 @@ class CaffeineApplet(Budgie.Applet):
                     self.defaults.get('sleep-inactive-battery-type'))
             self.lock_settings.set_boolean('lock-enabled',
                     self.defaults.get('lock-enabled'))
+            # Send notification if enabled
+            if self.settings.get_boolean("enable-notification"):
+                pass
 
             self.icon = Gtk.Image.new_from_icon_name("caffeine-cup-empty",
                 Gtk.IconSize.BUTTON)
