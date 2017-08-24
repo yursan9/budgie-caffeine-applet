@@ -28,9 +28,9 @@ class CaffeineApplet(Budgie.Applet):
 
 	    # Button Trigger
         self.box = Gtk.EventBox()
-        icon = Gtk.Image.new_from_icon_name("caffeine-cup-empty",
+        self.icon = Gtk.Image.new_from_icon_name("caffeine-cup-empty",
             Gtk.IconSize.BUTTON)
-        self.box.add(icon)
+        self.box.add(self.icon)
         self.add(self.box)
 
         # Popover
