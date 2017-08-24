@@ -75,15 +75,6 @@ class CaffeineApplet(Budgie.Applet):
         self.switch.connect("notify::active", self._on_caffeine_on)
         self.box.connect("button-press-event", self._on_press)
 
-    def fetch_default(self):
-        self.defaults = {
-            'idle-dim': self.power_settings.get_boolean('idle-dim'),
-            'sleep-inactive-ac-type': self.power_settings.get_string(
-                'sleep-inactive-ac-type'),
-            'sleep-inactive-battery-type': self.power_settings.get_string(
-                'sleep-inactive-battery-type'),
-            'lock-enabled': self.lock_settings.get_boolean('lock-enabled')
-        }
     def do_get_settings_ui(self):
         return CaffeineSettings(self.get_applet_settings(self.uuid))
 
@@ -94,36 +85,49 @@ class CaffeineApplet(Budgie.Applet):
         manager.register_popover(self.box, self.popover)
         self.manager = manager
 
+    def fetch_default(self):
+        self.defaults = {
+            "idle-dim": self.power_settings.get_boolean("idle-dim"),
+            "sleep-inactive-ac-type": self.power_settings.get_string(
+                "sleep-inactive-ac-type"),
+            "sleep-inactive-battery-type": self.power_settings.get_string(
+                "sleep-inactive-battery-type"),
+            "lock-enabled": self.lock_settings.get_boolean("lock-enabled")
+        }
+
     def _on_caffeine_on(self, switch, params):
         self.box.remove(self.icon)
         if switch.get_active():
-            self.power_settings.set_boolean('idle-dim',
             # Send notification if enabled
             if self.settings.get_boolean("enable-notification"):
                 pass
+
+            self.power_settings.set_boolean("idle-dim",
                                             False)
-            self.power_settings.set_string('sleep-inactive-ac-type',
-                                           'nothing')
-            self.power_settings.set_string('sleep-inactive-battery-type',
-                                           'nothing')
-            self.lock_settings.set_boolean('lock-enabled',
+            self.power_settings.set_string("sleep-inactive-ac-type",
+                                           "nothing")
+            self.power_settings.set_string("sleep-inactive-battery-type",
+                                           "nothing")
+            self.lock_settings.set_boolean("lock-enabled",
                                            False)
 
             self.icon = Gtk.Image.new_from_icon_name("caffeine-cup-full",
                 Gtk.IconSize.BUTTON)
             self.box.add(self.icon)
+
         else:
-            self.power_settings.set_boolean('idle-dim',
-                    self.defaults.get('idle-dim'))
-            self.power_settings.set_string('sleep-inactive-ac-type',
-                    self.defaults.get('sleep-inactive-ac-type'))
-            self.power_settings.set_string('sleep-inactive-battery-type',
-                    self.defaults.get('sleep-inactive-battery-type'))
-            self.lock_settings.set_boolean('lock-enabled',
-                    self.defaults.get('lock-enabled'))
             # Send notification if enabled
             if self.settings.get_boolean("enable-notification"):
                 pass
+
+            self.power_settings.set_boolean("idle-dim",
+                    self.defaults.get("idle-dim"))
+            self.power_settings.set_string("sleep-inactive-ac-type",
+                    self.defaults.get("sleep-inactive-ac-type"))
+            self.power_settings.set_string("sleep-inactive-battery-type",
+                    self.defaults.get("sleep-inactive-battery-type"))
+            self.lock_settings.set_boolean("lock-enabled",
+                    self.defaults.get("lock-enabled"))
 
             self.icon = Gtk.Image.new_from_icon_name("caffeine-cup-empty",
                 Gtk.IconSize.BUTTON)
