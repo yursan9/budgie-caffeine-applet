@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="budgie-caffeine-applet">
+  <schema id="com.github.yursan9.budgie-caffeine-applet">
+
+    <key type="b" name="enable-notification">
+      <default>false</default>
+      <summary>Show notification</summary>
+      <description>Simply show the notification on changing mode</description>
+    </key>
+  </schema>
+
+</schemalist>
