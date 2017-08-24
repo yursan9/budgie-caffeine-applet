@@ -18,15 +18,19 @@ dependency('budgie-1.0', version: '>=2')
 dependency('gobject-introspection-1.0', version: '>=1.51.1')
 dependency('gtk+-3.0', version :'>=3.22')
 
-APPLET_INSTALL_DIR = join_paths(get_option('prefix'), get_option('libdir'),
-	'budgie-desktop', 'plugins', meson.project_name())
+# Global path variabel
+prefix = get_option('prefix')
+libdir = join_paths(prefix, get_option('libdir'))
+datadir = join_paths(prefix, get_option('datadir'))
+APPLET_INSTALL_DIR = join_paths(libdir, 'budgie-desktop',
+	'plugins', meson.project_name())
 
 conf = configuration_data()
 conf.set('PROJECT_NAME', meson.project_name())
 
-subdir('data')
-
 message('Configuring applet...')
+subdir('data')
+message('Installing applet...')
 configure_file(
 	input: meson.project_name() + '.py.in',
 	output: meson.project_name() + '.py',
