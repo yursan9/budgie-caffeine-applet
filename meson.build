@@ -18,7 +18,7 @@ dependency('budgie-1.0', version: '>=2')
 dependency('gobject-introspection-1.0', version: '>=1.51.1')
 dependency('gtk+-3.0', version :'>=3.22')
 
-LIB_INSTALL_DIR = join_paths(get_option('prefix'), get_option('libdir'),
+APPLET_INSTALL_DIR = join_paths(get_option('prefix'), get_option('libdir'),
 	'budgie-desktop', 'plugins', meson.project_name())
 
 conf = configuration_data()
@@ -31,5 +31,5 @@ configure_file(
 	input: meson.project_name() + '.py.in',
 	output: meson.project_name() + '.py',
 	configuration: conf,
-	install_dir: LIB_INSTALL_DIR
+	install_dir: APPLET_INSTALL_DIR
 )
