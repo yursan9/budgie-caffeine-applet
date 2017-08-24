@@ -48,6 +48,7 @@ class CaffeineApplet(Budgie.Applet):
         self.show_all()
 
         # Connect Callback
+        self.switch.connect("notify::active", self._on_caffeine_on)
         self.box.connect("button-press-event", self._on_press)
 
     def fetch_default(self):
@@ -62,6 +63,18 @@ class CaffeineApplet(Budgie.Applet):
     def do_update_popovers(self, manager):
         manager.register_popover(self.box, self.popover)
         self.manager = manager
+
+    def _on_caffeine_on(self, switch, params):
+        self.box.remove(self.icon)
+        if switch.get_active():
+            self.icon = Gtk.Image.new_from_icon_name("caffeine-cup-full",
+                Gtk.IconSize.BUTTON)
+            self.box.add(self.icon)
+        else:
+            self.icon = Gtk.Image.new_from_icon_name("caffeine-cup-empty",
+                Gtk.IconSize.BUTTON)
+            self.box.add(self.icon)
+        self.box.show_all()
 
     def	_on_press(self, box, e):
         if e.button != 1:
