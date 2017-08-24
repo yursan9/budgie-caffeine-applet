@@ -20,11 +20,12 @@ class BudgieCaffeine(GObject.Object, Budgie.Plugin):
 
 class CaffeineApplet(Budgie.Applet):
     manager = None
-    default = {}
+    defaults = {}
 
     def __init__(self, uuid):
         Budgie.Applet.__init__(self)
         self.power_settings = Gio.Settings(POWER_SCHEME)
+        self.fetch_default()
 
 	    # Button Trigger
         self.box = Gtk.EventBox()
@@ -84,4 +85,5 @@ class CaffeineApplet(Budgie.Applet):
             self.popover.hide()
         else:
             self.manager.show_popover(self.box)
+            self.fetch_default()
         return Gdk.EVENT_STOP
