@@ -2,8 +2,8 @@
 Loader=python3
 Module=budgie-caffeine-applet
 Name=Caffeine
-Description=Control screen dimming
+Description=Caffeine Mode
 Authors=Yurizal Susanto
 Copyright=Copyright © 2017 Yurizal Susanto
 Website=https://yurizal-san.com
-Icon=caffeine-cup-full
+Icon=my-caffeine-on-symbolic

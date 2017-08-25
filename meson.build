@@ -22,15 +22,15 @@ dependency('gtk+-3.0', version :'>=3.22')
 prefix = get_option('prefix')
 libdir = join_paths(prefix, get_option('libdir'))
 datadir = join_paths(prefix, get_option('datadir'))
+ICON_INSTALL_DIR = join_paths(datadir, 'icons', 'hicolor')
 APPLET_INSTALL_DIR = join_paths(libdir, 'budgie-desktop',
 	'plugins', meson.project_name())
 
 conf = configuration_data()
 conf.set('PROJECT_NAME', meson.project_name())
 
-message('Configuring applet...')
-subdir('data')
 message('Installing applet...')
+subdir('data')
 configure_file(
 	input: meson.project_name() + '.py.in',
 	output: meson.project_name() + '.py',
