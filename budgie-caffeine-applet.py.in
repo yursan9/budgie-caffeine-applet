@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import gettext
+import subprocess
 import gi
 gi.require_version('Gtk', '3.0')
 gi.require_version('Budgie', '1.0')
@@ -85,6 +86,18 @@ class CaffeineApplet(Budgie.Applet):
         manager.register_popover(self.box, self.popover)
         self.manager = manager
 
+    def send_notification(self, turn_on, auto=None):
+        cmd = ["notify-send"]
+        if turn_on:
+            cmd.append("Turn on Caffeine Boost")
+            if auto:
+                cmd.append(auto + "automatically turn on Caffeine Mode")
+            cmd.append("--icon=caffeine-cup-full")
+        else:
+            cmd.append("Turn off Caffeine Boost")
+            cmd.append("--icon=caffeine-cup-empty")
+        subprocess.Popen(cmd)
+
     def fetch_default(self):
         self.defaults = {
             "idle-dim": self.power_settings.get_boolean("idle-dim"),
@@ -98,10 +111,6 @@ class CaffeineApplet(Budgie.Applet):
     def _on_caffeine_on(self, switch, params):
         self.box.remove(self.icon)
         if switch.get_active():
-            # Send notification if enabled
-            if self.settings.get_boolean("enable-notification"):
-                pass
-
             self.power_settings.set_boolean("idle-dim",
                                             False)
             self.power_settings.set_string("sleep-inactive-ac-type",
@@ -116,10 +125,6 @@ class CaffeineApplet(Budgie.Applet):
             self.box.add(self.icon)
 
         else:
-            # Send notification if enabled
-            if self.settings.get_boolean("enable-notification"):
-                pass
-
             self.power_settings.set_boolean("idle-dim",
                     self.defaults.get("idle-dim"))
             self.power_settings.set_string("sleep-inactive-ac-type",
@@ -132,6 +137,10 @@ class CaffeineApplet(Budgie.Applet):
             self.icon = Gtk.Image.new_from_icon_name("caffeine-cup-empty",
                 Gtk.IconSize.BUTTON)
             self.box.add(self.icon)
+
+        # Send notification if enabled
+        if self.settings.get_boolean("enable-notification"):
+            self.send_notification(switch.get_active())
         self.box.show_all()
 
     def	_on_press(self, box, e):
