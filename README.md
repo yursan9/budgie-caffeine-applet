@@ -21,8 +21,11 @@ Simple applet to prevent screen dimming on long idle time.
 - ninja
 - python-gobject
 - libnotify (notify-send)
+- budgie-1.0 >= 2
 
 ## Installation
+
+**ONLY TESTED** on fully updated Solus with Budgie 10.4
 
 To install this applet, follow instruction below:
 ```
