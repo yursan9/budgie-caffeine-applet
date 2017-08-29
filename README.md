@@ -1,6 +1,7 @@
 # Budgie Caffeine Applet
 
 Simple applet to prevent screen dimming on long idle time.
+
 ![The applet](https://raw.githubusercontent.com/yursan9/budgie-caffeine-applet/master/img/initial-applet.png)
 
 ## Feature
@@ -45,3 +46,5 @@ that, I provided some ugly fallback icon for you. If you think you can make
 better icons, I'll merge your PR.
 
 If any other issues arise, let me know!
+
+*Salam kopi!*
