@@ -22,10 +22,10 @@ class BudgieCaffeine(GObject.Object, Budgie.Plugin):
 
 class CaffeineSettings(Gtk.Grid):
     def __init__(self, setting):
-        super().__init__()
+        super().__init__(row_spacing=8)
         self.setting = setting
 
-        label = Gtk.Label("Enable Notification")
+        label = Gtk.Label("Enable Notification", halign=Gtk.Align.START)
         self.add(label)
         notify_switch = Gtk.Switch(halign=Gtk.Align.END, hexpand=True)
         self.attach(notify_switch, 1, 0, 1, 1)
@@ -35,12 +35,11 @@ class CaffeineSettings(Gtk.Grid):
         self.show_all()
 
 class CaffeineApplet(Budgie.Applet):
-    manager = None
-    defaults = {}
-
     def __init__(self, uuid):
         Budgie.Applet.__init__(self)
         self.uuid = uuid
+        self.manager = None
+        self.defaults = {}
 
         # Ensure schema and prefix is set properly
         self.set_settings_prefix("/com/github/yursan9/budgie-caffeine-applet")
