@@ -60,6 +60,7 @@ class CaffeineApplet(Budgie.Applet):
 
         # Popover
         self.popover = Budgie.Popover.new(self.box)
+        self.popover.get_style_context().add_class("caffeine-popover")
         layout = Gtk.Box()
         layout.set_border_width(6)
         label = Gtk.Label("Caffeine Mode")
