@@ -14,14 +14,14 @@ Simple applet to prevent screen dimming on long idle time.
 
 ## Requirement
 
-- gtk3
+- budgie-1.0 >= 2
 - gobject-introspection
-- python3
-- meson >= 0.40
+- gtk3 >= 3.20
+- libnotify (notify-send)
+- meson
 - ninja
 - python-gobject
-- libnotify (notify-send)
-- budgie-1.0 >= 2
+- python3
 
 ## Installation
 
