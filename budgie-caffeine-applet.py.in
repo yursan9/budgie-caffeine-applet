@@ -112,6 +112,7 @@ class CaffeineApplet(Budgie.Applet):
     def _on_caffeine_on(self, switch, params):
         self.box.remove(self.icon)
         if switch.get_active():
+            self.fetch_default()
             self.session_settings.set_uint("idle-delay", 0)
             self.power_settings.set_boolean("idle-dim", False)
             self.power_settings.set_string("sleep-inactive-ac-type",
@@ -150,5 +151,4 @@ class CaffeineApplet(Budgie.Applet):
             self.popover.hide()
         else:
             self.manager.show_popover(self.box)
-            self.fetch_default()
         return Gdk.EVENT_STOP
