@@ -7,7 +7,7 @@ gi.require_version('Budgie', '1.0')
 from gi.repository import Budgie, Gdk, Gio, GObject, Gtk
 
 POWER_SCHEME = "org.gnome.settings-daemon.plugins.power"
-LOCKSCREEN_SCHEME = "org.gnome.desktop.screensaver"
+SESSION_SCHEME = "org.gnome.desktop.session"
 
 class BudgieCaffeine(GObject.Object, Budgie.Plugin):
     __gtype_name__ = "@PROJECT_NAME@"
@@ -48,7 +48,7 @@ class CaffeineApplet(Budgie.Applet):
 
         # Controlled settings
         self.power_settings = Gio.Settings(POWER_SCHEME)
-        self.lock_settings = Gio.Settings(LOCKSCREEN_SCHEME)
+        self.session_settings = Gio.Settings(SESSION_SCHEME)
         self.fetch_default()
 
 	    # Button Trigger
@@ -101,7 +101,7 @@ class CaffeineApplet(Budgie.Applet):
 
     def fetch_default(self):
         self.defaults = {
-            "lock-enabled": self.lock_settings.get_boolean("lock-enabled"),
+            "idle-delay": self.session_settings.get_uint("idle-delay"),
             "idle-dim": self.power_settings.get_boolean("idle-dim"),
             "sleep-inactive-ac-type": self.power_settings.get_string(
                 "sleep-inactive-ac-type"),
@@ -112,28 +112,26 @@ class CaffeineApplet(Budgie.Applet):
     def _on_caffeine_on(self, switch, params):
         self.box.remove(self.icon)
         if switch.get_active():
-            self.power_settings.set_boolean("idle-dim",
-                                            False)
+            self.session_settings.set_uint("idle-delay", 0)
+            self.power_settings.set_boolean("idle-dim", False)
             self.power_settings.set_string("sleep-inactive-ac-type",
                                            "nothing")
             self.power_settings.set_string("sleep-inactive-battery-type",
                                            "nothing")
-            self.lock_settings.set_boolean("lock-enabled",
-                                           False)
 
             self.icon = Gtk.Image.new_from_icon_name("caffeine-cup-full",
                 Gtk.IconSize.BUTTON)
             self.box.add(self.icon)
 
         else:
+            self.session_settings.set_uint("idle-delay",
+                    self.defaults.get("idle-delay"))
             self.power_settings.set_boolean("idle-dim",
                     self.defaults.get("idle-dim"))
             self.power_settings.set_string("sleep-inactive-ac-type",
                     self.defaults.get("sleep-inactive-ac-type"))
             self.power_settings.set_string("sleep-inactive-battery-type",
                     self.defaults.get("sleep-inactive-battery-type"))
-            self.lock_settings.set_boolean("lock-enabled",
-                    self.defaults.get("lock-enabled"))
 
             self.icon = Gtk.Image.new_from_icon_name("caffeine-cup-empty",
                 Gtk.IconSize.BUTTON)
