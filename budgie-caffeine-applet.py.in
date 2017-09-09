@@ -25,7 +25,7 @@ class CaffeineSettings(Gtk.Grid):
         super().__init__(row_spacing=8)
         self.setting = setting
 
-        label = Gtk.Label("Enable Notification", halign=Gtk.Align.START)
+        label = Gtk.Label(_("Enable Notification"), halign=Gtk.Align.START)
         self.add(label)
         notify_switch = Gtk.Switch(halign=Gtk.Align.END, hexpand=True)
         self.attach(notify_switch, 1, 0, 1, 1)
@@ -63,7 +63,7 @@ class CaffeineApplet(Budgie.Applet):
         self.popover.get_style_context().add_class("caffeine-popover")
         layout = Gtk.Box()
         layout.set_border_width(6)
-        label = Gtk.Label("Caffeine Mode")
+        label = Gtk.Label(_("Caffeine Mode"))
         layout.pack_start(label, False, True, 6)
         self.switch = Gtk.Switch()
         layout.pack_end(self.switch, False, True, 6)
@@ -90,12 +90,12 @@ class CaffeineApplet(Budgie.Applet):
     def send_notification(self, turn_on, auto=None):
         cmd = ["notify-send"]
         if turn_on:
-            cmd.append("Turn on Caffeine Boost")
+            cmd.append(_("Turn on Caffeine Boost"))
             if auto:
-                cmd.append(auto + "automatically turn on Caffeine Mode")
+                cmd.append(_("{app} automatically turn on Caffeine Mode").format(app=auto))
             cmd.append("--icon=caffeine-cup-full")
         else:
-            cmd.append("Turn off Caffeine Boost")
+            cmd.append(_("Turn off Caffeine Boost"))
             cmd.append("--icon=caffeine-cup-empty")
         subprocess.Popen(cmd)
 
