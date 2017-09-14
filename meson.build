@@ -30,7 +30,10 @@ conf = configuration_data()
 conf.set('PROJECT_NAME', meson.project_name())
 
 message('Installing applet...')
+
 subdir('data')
+subdir('po')
+
 configure_file(
 	input: meson.project_name() + '.py.in',
 	output: meson.project_name() + '.py',
