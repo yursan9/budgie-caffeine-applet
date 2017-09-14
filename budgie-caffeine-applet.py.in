@@ -4,7 +4,7 @@ import subprocess
 import gi
 gi.require_version('Gtk', '3.0')
 gi.require_version('Budgie', '1.0')
-from gi.repository import Budgie, Gdk, Gio, GObject, Gtk
+from gi.repository import Budgie, Gdk, Gio, GLib, GObject, Gtk
 
 POWER_SCHEME = "org.gnome.settings-daemon.plugins.power"
 SESSION_SCHEME = "org.gnome.desktop.session"
@@ -51,7 +51,7 @@ class CaffeineApplet(Budgie.Applet):
         self.session_settings = Gio.Settings(SESSION_SCHEME)
         self.fetch_default()
 
-	    # Button Trigger
+	# Button Trigger
         self.box = Gtk.EventBox()
         self.icon = Gtk.Image.new_from_icon_name("caffeine-cup-empty",
             Gtk.IconSize.BUTTON)
@@ -61,12 +61,18 @@ class CaffeineApplet(Budgie.Applet):
         # Popover
         self.popover = Budgie.Popover.new(self.box)
         self.popover.get_style_context().add_class("caffeine-popover")
-        layout = Gtk.Box()
+        layout = Gtk.Grid()
         layout.set_border_width(6)
-        label = Gtk.Label(_("Caffeine Mode"))
-        layout.pack_start(label, False, True, 6)
-        self.switch = Gtk.Switch()
-        layout.pack_end(self.switch, False, True, 6)
+        
+        label = Gtk.Label(_("Caffeine Mode"), halign=Gtk.Align.START)
+        layout.add(label)
+        self.switch = Gtk.Switch(halign=Gtk.Align.END, hexpand=True)
+        layout.attach_next_to(self.switch, label, Gtk.PositionType.RIGHT, 1, 1)
+
+        label = Gtk.Label(_("Timer (minutes)"), halign=Gtk.Align.START)
+        layout.attach(label, 0, 1, 1, 1)
+        self.timer = Gtk.SpinButton.new_with_range(0.0, 1440.0, 1.0)
+        layout.attach_next_to(self.timer, label, Gtk.PositionType.RIGHT, 1, 1)
         self.popover.add(layout)
 
         self.popover.get_child().show_all()
@@ -87,10 +93,13 @@ class CaffeineApplet(Budgie.Applet):
         manager.register_popover(self.box, self.popover)
         self.manager = manager
 
-    def send_notification(self, turn_on, auto=None):
+    def send_notification(self, turn_on, time, auto=None):
         cmd = ["notify-send"]
         if turn_on:
             cmd.append(_("Turn on Caffeine Boost"))
+            if time:
+                duration = _("{time} minutes").format(time=time) if time > 1 else _("a minute")
+                cmd.append(_("Will turn off in ") + duration)
             if auto:
                 cmd.append(_("{app} automatically turn on Caffeine Mode").format(app=auto))
             cmd.append("--icon=caffeine-cup-full")
@@ -109,8 +118,15 @@ class CaffeineApplet(Budgie.Applet):
                 "sleep-inactive-battery-type")
         }
 
+    def timer_out(self, time):
+        self.switch.set_active(False)
+        self.timer.set_value(0)
+        return False
+
     def _on_caffeine_on(self, switch, params):
         self.box.remove(self.icon)
+        
+        time = self.timer.get_value_as_int()
         if switch.get_active():
             self.fetch_default()
             self.session_settings.set_uint("idle-delay", 0)
@@ -123,6 +139,9 @@ class CaffeineApplet(Budgie.Applet):
             self.icon = Gtk.Image.new_from_icon_name("caffeine-cup-full",
                 Gtk.IconSize.BUTTON)
             self.box.add(self.icon)
+            
+            if time:
+                GLib.timeout_add_seconds(time * 60, self.timer_out, GLib.PRIORITY_DEFAULT)
 
         else:
             self.session_settings.set_uint("idle-delay",
@@ -140,7 +159,7 @@ class CaffeineApplet(Budgie.Applet):
 
         # Send notification if enabled
         if self.settings.get_boolean("enable-notification"):
-            self.send_notification(switch.get_active())
+            self.send_notification(switch.get_active(), time)
         self.box.show_all()
 
     def	_on_press(self, box, e):
