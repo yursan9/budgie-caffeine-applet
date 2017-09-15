@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-caffeine-applet 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-07 11:56+0700\n"
+"POT-Creation-Date: 2017-09-15 12:49+0700\n"
 "PO-Revision-Date: 2017-09-07 11:58+0700\n"
 "Last-Translator: Yurizal Susanto <rizal.sagi@gmail.com>\n"
 "Language-Team: English\n"
@@ -21,19 +21,36 @@ msgstr ""
 msgid "Enable Notification"
 msgstr "Enable Notification"
 
-#: budgie-caffeine-applet.py.in:66
+#: budgie-caffeine-applet.py.in:67
 msgid "Caffeine Mode"
 msgstr "Caffeine Mode"
 
-#: budgie-caffeine-applet.py.in:93
+#: budgie-caffeine-applet.py.in:72
+msgid "Timer (minutes)"
+msgstr "Timer (minutes)"
+
+#: budgie-caffeine-applet.py.in:99
 msgid "Turn on Caffeine Boost"
 msgstr "Turn on Caffeine Boost"
 
-#: budgie-caffeine-applet.py.in:95
+#: budgie-caffeine-applet.py.in:101
+#, python-brace-format
+msgid "{time} minutes"
+msgstr "{time} minutes"
+
+#: budgie-caffeine-applet.py.in:101
+msgid "a minute"
+msgstr "a minute"
+
+#: budgie-caffeine-applet.py.in:102
+msgid "Will turn off in "
+msgstr "Will turn off in "
+
+#: budgie-caffeine-applet.py.in:104
 #, python-brace-format
 msgid "{app} automatically turn on Caffeine Mode"
 msgstr "{app} automatically turn on Caffeine Mode"
 
-#: budgie-caffeine-applet.py.in:98
+#: budgie-caffeine-applet.py.in:107
 msgid "Turn off Caffeine Boost"
 msgstr "Turn off Caffeine Boost"

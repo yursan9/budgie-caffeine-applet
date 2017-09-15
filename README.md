@@ -9,6 +9,8 @@ Simple applet to prevent screen dimming on long idle time.
 - Prevent screen dimming
 - Prevent triggering lock screen
 - Notification support (For you who want visual noise)
+- Timer
+- i18n Support (currently only en_US, and id)
 
 ![notification support](https://raw.githubusercontent.com/yursan9/budgie-caffeine-applet/master/img/notification-support.png)
 
