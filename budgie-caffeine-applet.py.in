@@ -6,8 +6,10 @@ gi.require_version('Gtk', '3.0')
 gi.require_version('Budgie', '1.0')
 from gi.repository import Budgie, Gdk, Gio, GLib, GObject, Gtk
 
+
 POWER_SCHEME = "org.gnome.settings-daemon.plugins.power"
 SESSION_SCHEME = "org.gnome.desktop.session"
+
 
 class BudgieCaffeine(GObject.Object, Budgie.Plugin):
     __gtype_name__ = "@PROJECT_NAME@"
@@ -19,6 +21,7 @@ class BudgieCaffeine(GObject.Object, Budgie.Plugin):
 
     def do_get_panel_widget(self, uuid):
         return CaffeineApplet(uuid)
+
 
 class CaffeineSettings(Gtk.Grid):
     def __init__(self, setting):
@@ -33,6 +36,7 @@ class CaffeineSettings(Gtk.Grid):
         setting.bind("enable-notification", notify_switch, "active",
                           Gio.SettingsBindFlags.DEFAULT)
         self.show_all()
+
 
 class CaffeineApplet(Budgie.Applet):
     def __init__(self, uuid):
@@ -51,7 +55,7 @@ class CaffeineApplet(Budgie.Applet):
         self.session_settings = Gio.Settings(SESSION_SCHEME)
         self.fetch_default()
 
-	# Button Trigger
+        # Button Trigger
         self.box = Gtk.EventBox()
         self.icon = Gtk.Image.new_from_icon_name("caffeine-cup-empty",
             Gtk.IconSize.BUTTON)
@@ -63,7 +67,7 @@ class CaffeineApplet(Budgie.Applet):
         self.popover.get_style_context().add_class("caffeine-popover")
         layout = Gtk.Grid()
         layout.set_border_width(6)
-        
+
         label = Gtk.Label(_("Caffeine Mode"), halign=Gtk.Align.START)
         layout.add(label)
         self.switch = Gtk.Switch(halign=Gtk.Align.END, hexpand=True)
