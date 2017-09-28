@@ -134,10 +134,11 @@ class CaffeineApplet(Budgie.Applet):
 
     def _on_caffeine_on(self, switch, params):
         self.box.remove(self.icon)
-        
+
         time = self.timer.get_value_as_int()
         if switch.get_active():
             self.fetch_default()
+            self.timer.set_sensitive(False)
             self.session_settings.set_uint("idle-delay", 0)
             self.power_settings.set_boolean("idle-dim", False)
             self.power_settings.set_string("sleep-inactive-ac-type",
@@ -148,11 +149,12 @@ class CaffeineApplet(Budgie.Applet):
             self.icon = Gtk.Image.new_from_icon_name("caffeine-cup-full",
                 Gtk.IconSize.BUTTON)
             self.box.add(self.icon)
-            
+
             if time:
                 GLib.timeout_add_seconds(time * 60, self.timer_out, GLib.PRIORITY_DEFAULT)
 
         else:
+            self.timer.set_sensitive(True)
             self.session_settings.set_uint("idle-delay",
                     self.defaults.get("idle-delay"))
             self.power_settings.set_boolean("idle-dim",
