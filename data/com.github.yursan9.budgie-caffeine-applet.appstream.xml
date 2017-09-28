@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="addon">
+  <id>com.github.yursan9.budgie-caffeine-applet</id>
+  <pkgname>budgie-caffeine-applet</pkgname>
+  <translation type="gettext">budgie-caffeine-applet</translation>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0+</project_license>
+  <name>Budgie Caffeine Applet</name>
+  <summary>Simple applet to prevent screen dimming on long idle time</summary>
+  <description>
+    <p>
+    Budgie Caffeine Applet is an addon for Budgie Desktop to prevent screen dimming on long idle time.
+    </p>
+    <p>
+    Features of the applet:
+    </p>
+    <ul>
+      <li>Timer</li>
+      <li>Notification</li>
+    </ul>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/cybre/budgie-haste-applet/master/data/images/screenshot1.png</image>
+    </screenshot>
+  </screenshots>
+  <url type="homepage">https://github.com/yursan9/budgie-caffeine-applet</url>
+  <url type="bugtracker">https://github.com/yursan9/budgie-caffeine-applet/issues</url>
+  <developer_name>Yurizal Susanto</developer_name>
+  <updatecontact>rizalsagi_AT_gmail.com</updatecontact>
+</component>
