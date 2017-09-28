@@ -73,8 +73,12 @@ class CaffeineApplet(Budgie.Applet):
         self.switch = Gtk.Switch(halign=Gtk.Align.END, hexpand=True)
         layout.attach_next_to(self.switch, label, Gtk.PositionType.RIGHT, 1, 1)
 
+        sep = Gtk.Separator()
+        sep.set_margin_top(10)
+        layout.attach(sep, 0, 1, 2, 1)
+
         label = Gtk.Label(_("Timer (minutes)"), halign=Gtk.Align.START)
-        layout.attach(label, 0, 1, 1, 1)
+        layout.attach(label, 0, 2, 1, 1)
         self.timer = Gtk.SpinButton.new_with_range(0.0, 1440.0, 1.0)
         layout.attach_next_to(self.timer, label, Gtk.PositionType.RIGHT, 1, 1)
         self.popover.add(layout)
