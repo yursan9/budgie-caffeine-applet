@@ -106,8 +106,9 @@ class CaffeineApplet(Budgie.Applet):
         if turn_on:
             cmd.append(_("Turn on Caffeine Boost"))
             if time:
+                sep = " "
                 duration = _("{time} minutes").format(time=time) if time > 1 else _("a minute")
-                cmd.append(_("Will turn off in ") + duration)
+                cmd.append(_("Will turn off in {duration}").format(duration=duration))
             if auto:
                 cmd.append(_("{app} automatically turn on Caffeine Mode").format(app=auto))
             cmd.append("--icon=caffeine-cup-full")
