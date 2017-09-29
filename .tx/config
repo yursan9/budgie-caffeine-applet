@@ -1,0 +1,9 @@
+[main]
+host = https://www.transifex.com
+minimum_perc = 100
+
+[budgie-caffeine-applet.budgie-caffeine-appletpot]
+file_filter = po/<lang>.po
+source_lang = en_US
+type = PO
+

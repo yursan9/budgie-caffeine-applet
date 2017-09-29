@@ -1,4 +1,6 @@
 #!/bin/sh
+tx pull -a
+
 cd po
 rm LINGUAS
 
