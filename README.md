@@ -10,7 +10,7 @@ Simple applet to prevent screen dimming on long idle time.
 - Prevent triggering lock screen
 - Notification support (For you who want visual noise)
 - Timer
-- i18n Support (currently only en_US, and id)
+- i18n Support
 
 ![notification support](https://raw.githubusercontent.com/yursan9/budgie-caffeine-applet/master/img/notification-support.png)
 
@@ -49,6 +49,8 @@ If you want to remove the applet, use `sudo ninja uninstall`.
 Only `papirus` icon theme support the icons used by this applet. Because of
 that, I provided some ugly fallback icon for you. If you think you can make
 better icons, I'll merge your PR.
+
+Help me deliver this applet to wider audiences by helping me translate this applet! Go to https://www.transifex.com/yursans-budgie-applets/budgie-caffeine-applet/ and start translating.
 
 If any other issues arise, let me know!
 
