@@ -27,7 +27,13 @@ Simple applet to prevent screen dimming on long idle time.
 
 ## Installation
 
-**ONLY TESTED** on fully updated Solus with Budgie 10.4
+### Solus
+
+```
+eopkg it budgie-caffeine-applet
+```
+
+### Manual
 
 To install this applet, follow instruction below:
 ```
