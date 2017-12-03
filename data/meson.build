@@ -23,4 +23,9 @@ install_data(
     install_dir: join_paths(datadir, 'glib-2.0', 'schemas'),
 )
 
+install_data(
+    'com.github.yursan9.budgie-caffeine-applet.appdata.xml',
+    install_dir: join_paths(datadir, 'appdata')
+)
+
 meson.add_install_script('meson_post_install')
