@@ -10,49 +10,49 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-09-22 16:23+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Yurizal Susanto <rizal.sagi@gmail.com>, 2017\n"
-"Language-Team: Indonesian (https://www.transifex.com/yursans-budgie-applets/teams/79144/id/)\n"
+"Last-Translator: Moo <moose@mail.ru>, 2017\n"
+"Language-Team: Lithuanian (https://www.transifex.com/yursans-budgie-applets/teams/79144/lt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: id\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: lt\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: budgie-caffeine-applet.py.in:31
 msgid "Enable Notification"
-msgstr "Aktifkan Notifikasi"
+msgstr "Įjungti pranešimą"
 
 #: budgie-caffeine-applet.py.in:71
 msgid "Caffeine Mode"
-msgstr "Mode Kafein"
+msgstr "Kofeino veiksena"
 
 #: budgie-caffeine-applet.py.in:79
 msgid "Timer (minutes)"
-msgstr "Timer (menit)"
+msgstr "Laikmatis (minučių)"
 
 #: budgie-caffeine-applet.py.in:106
 msgid "Turn on Caffeine Boost"
-msgstr "Aktifkan dorongan kafein"
+msgstr "Kofeino paskatinimas įjungtas"
 
 #: budgie-caffeine-applet.py.in:109
 #, python-brace-format
 msgid "{time} minutes"
-msgstr "{time} menit"
+msgstr "{time} min."
 
 #: budgie-caffeine-applet.py.in:109
 msgid "a minute"
-msgstr "semenit"
+msgstr "minutės"
 
 #: budgie-caffeine-applet.py.in:110
 #, python-brace-format
 msgid "Will turn off in {duration}"
-msgstr "Akan mati dalam {duration}"
+msgstr "Išsijungs po {duration}"
 
 #: budgie-caffeine-applet.py.in:112
 #, python-brace-format
 msgid "{app} automatically turn on Caffeine Mode"
-msgstr "{app} mengaktifkan mode Kafein secara otomatis"
+msgstr "{app} automatiškai įjungė kofeino veikseną"
 
 #: budgie-caffeine-applet.py.in:115
 msgid "Turn off Caffeine Boost"
-msgstr "Matikan dorongan kafein"
+msgstr "Kofeino paskatinimas išjungtas"

@@ -10,49 +10,49 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-09-22 16:23+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Yurizal Susanto <rizal.sagi@gmail.com>, 2017\n"
-"Language-Team: Indonesian (https://www.transifex.com/yursans-budgie-applets/teams/79144/id/)\n"
+"Last-Translator: SD SkyKlouD <koongchi135@gmail.com>, 2017\n"
+"Language-Team: Korean (https://www.transifex.com/yursans-budgie-applets/teams/79144/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: id\n"
+"Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: budgie-caffeine-applet.py.in:31
 msgid "Enable Notification"
-msgstr "Aktifkan Notifikasi"
+msgstr "알림 활성화"
 
 #: budgie-caffeine-applet.py.in:71
 msgid "Caffeine Mode"
-msgstr "Mode Kafein"
+msgstr "카페인 모드"
 
 #: budgie-caffeine-applet.py.in:79
 msgid "Timer (minutes)"
-msgstr "Timer (menit)"
+msgstr "타이머 (분)"
 
 #: budgie-caffeine-applet.py.in:106
 msgid "Turn on Caffeine Boost"
-msgstr "Aktifkan dorongan kafein"
+msgstr "카페인 부스트 활성화"
 
 #: budgie-caffeine-applet.py.in:109
 #, python-brace-format
 msgid "{time} minutes"
-msgstr "{time} menit"
+msgstr "{time}분"
 
 #: budgie-caffeine-applet.py.in:109
 msgid "a minute"
-msgstr "semenit"
+msgstr "1분"
 
 #: budgie-caffeine-applet.py.in:110
 #, python-brace-format
 msgid "Will turn off in {duration}"
-msgstr "Akan mati dalam {duration}"
+msgstr "{duration} 후 꺼짐"
 
 #: budgie-caffeine-applet.py.in:112
 #, python-brace-format
 msgid "{app} automatically turn on Caffeine Mode"
-msgstr "{app} mengaktifkan mode Kafein secara otomatis"
+msgstr "{app}이(가) 카페인 모드를 자동으로 켬"
 
 #: budgie-caffeine-applet.py.in:115
 msgid "Turn off Caffeine Boost"
-msgstr "Matikan dorongan kafein"
+msgstr "카페인 부스트 비활성화"
