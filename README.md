@@ -62,4 +62,9 @@ better icons, I'll merge your PR.
 
 If any other issues arise, let me know!
 
+## Donation
+
+If you like this applet and do not mind buying my daily dosage of milk.
+You can donate to me [here](https://paypal.me/YurizalS) via Paypal.
+
 *Salam kopi!*
