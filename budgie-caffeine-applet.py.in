@@ -191,8 +191,12 @@ class CaffeineApplet(Budgie.Applet):
         self.box.show_all()
 
     def	_on_press(self, box, e):
-        if e.button != 1:
+        if e.button not in [1, 2]:
             return Gdk.EVENT_PROPAGATE
+
+        if e.button == 2:
+            self.switch.set_active(True)
+            return Gdk.EVENT_STOP
 
         # Popover show and hide
         if self.popover.get_visible():
