@@ -9,6 +9,7 @@ Simple applet to prevent screen dimming on long idle time.
 - Prevent screen dimming
 - Prevent triggering lock screen
 - Notification support (For you who want visual noise)
+- Single click activation with middle mouse button
 - Timer
 - i18n Support
 
@@ -52,7 +53,10 @@ If you want to remove the applet, use `sudo ninja uninstall`.
 
 ## Translation
 
-Help me deliver this applet to wider audiences by helping me translate this applet! Go to https://www.transifex.com/yursans-budgie-applets/budgie-caffeine-applet/ and start translating.
+Help me deliver this applet to wider audiences by helping me translate this
+applet! Go to
+https://www.transifex.com/yursans-budgie-applets/budgie-caffeine-applet/
+andstart translating.
 
 ## Issue
 
@@ -65,6 +69,6 @@ If any other issues arise, let me know!
 ## Donation
 
 If you like this applet and do not mind buying my daily dosage of milk.
-You can donate to me [here](https://paypal.me/YurizalS) via Paypal.
+You can donate to me [here via Paypal](https://paypal.me/YurizalS).
 
 *Salam kopi!*
