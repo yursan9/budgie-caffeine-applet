@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import gettext
 import subprocess
+import dbus
 import gi
 gi.require_version('Gtk', '3.0')
 gi.require_version('Budgie', '1.0')
@@ -55,6 +56,10 @@ class CaffeineApplet(Budgie.Applet):
         self.settings = self.get_applet_settings(self.uuid)
 
         # Controlled settings
+        bus = dbus.SessionBus()
+        proxy = bus.get_object("org.gnome.SettingsDaemon.Power",
+                               "/org/gnome/SettingsDaemon/Power")
+        self.screen_settings = dbus.Interface(proxy, "org.freedesktop.DBus.Properties")
         self.power_settings = Gio.Settings(POWER_SCHEME)
         self.session_settings = Gio.Settings(SESSION_SCHEME)
         self.fetch_default()
@@ -143,7 +148,23 @@ class CaffeineApplet(Budgie.Applet):
                 "sleep-inactive-ac-type"),
             "sleep-inactive-battery-type": self.power_settings.get_string(
                 "sleep-inactive-battery-type"),
+            "screen-brightness": self.screen_settings.Get(
+                "org.gnome.SettingsDaemon.Power.Screen", "Brightness"),
         }
+
+    def change_screen_brightness(self, activate, value):
+        """Change screen brightness to value in Gio.Setting
+
+        Variable activate acts as toogle, and variable value provides for
+        default brightness value
+        """
+        if activate:
+            self.screen_settings.Set('org.gnome.SettingsDaemon.Power.Screen',
+                                     'Brightness',
+                                     self.settings.get_uint("screen-brightness"))
+        else:
+            self.screen_settings.Set('org.gnome.SettingsDaemon.Power.Screen',
+                                     'Brightness', value)
 
     def timer_out(self, time):
         """Reset Caffeine mode and timer value"""
@@ -172,8 +193,8 @@ class CaffeineApplet(Budgie.Applet):
 
             # Add timeout callback if time is not 0
             if time:
-                GLib.timeout_add_seconds(time * 60, self.timer_out, GLib.PRIORITY_DEFAULT)
-
+                GLib.timeout_add_seconds(time * 60, self.timer_out,
+                                         GLib.PRIORITY_DEFAULT)
         else:
             self.timer.set_sensitive(True)
             self.session_settings.set_uint("idle-delay",
@@ -189,17 +210,26 @@ class CaffeineApplet(Budgie.Applet):
                 Gtk.IconSize.BUTTON)
             self.box.add(self.icon)
 
+        # Change screen brightness
+        self.change_screen_brightness(switch.get_active(),
+                                      self.defaults.get("screen-brightness"))
+
         # Send notification if enabled
         if self.settings.get_boolean("enable-notification"):
             self.send_notification(switch.get_active(), time)
         self.box.show_all()
 
     def	_on_press(self, box, e):
+        # Stop if not left or middle click button
         if e.button not in [1, 2]:
             return Gdk.EVENT_PROPAGATE
 
+        # If middle button clicked toogle the caffeine mode
         if e.button == 2:
-            self.switch.set_active(True)
+            if self.switch.get_active():
+                self.switch.set_active(False)
+            else:
+                self.switch.set_active(True)
             return Gdk.EVENT_STOP
 
         # Popover show and hide
