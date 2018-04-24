@@ -110,14 +110,14 @@ class CaffeineApplet(Budgie.Applet):
         manager.register_popover(self.box, self.popover)
         self.manager = manager
 
-    def send_notification(self, turn_on, time, auto=None):
+    def send_notification(self, activate, time, auto=None):
         """Send Notification using notify-send binary.
 
         NOTE: Budgie is panicking if you tried using built-in Notify library.
         """
         cmd = ["notify-send"]
 
-        if turn_on:
+        if activate:
             cmd.append(_("Turn on Caffeine Boost"))
             if time:
                 duration = _("{time} minutes").format(time=time) if time > 1 else _("a minute")
@@ -132,13 +132,17 @@ class CaffeineApplet(Budgie.Applet):
         subprocess.Popen(cmd)
 
     def fetch_default(self):
+        """Fetch default configuration
+
+        Store the configuration to defaults
+        """
         self.defaults = {
             "idle-delay": self.session_settings.get_uint("idle-delay"),
             "idle-dim": self.power_settings.get_boolean("idle-dim"),
             "sleep-inactive-ac-type": self.power_settings.get_string(
                 "sleep-inactive-ac-type"),
             "sleep-inactive-battery-type": self.power_settings.get_string(
-                "sleep-inactive-battery-type")
+                "sleep-inactive-battery-type"),
         }
 
     def timer_out(self, time):
