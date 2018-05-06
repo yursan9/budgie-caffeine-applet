@@ -37,10 +37,27 @@ class CaffeineSettings(Gtk.Grid):
         notify_switch = Gtk.Switch(halign=Gtk.Align.END, hexpand=True)
         self.attach(notify_switch, 1, 0, 1, 1)
 
-        setting.bind("enable-notification", notify_switch, "active",
-                          Gio.SettingsBindFlags.DEFAULT)
-        self.show_all()
+        brightness_label = Gtk.Label(_("Maximize Brightness"), halign=Gtk.Align.START)
+        self.attach(brightness_label, 0, 1, 1, 1)
+        brightness_switch = Gtk.Switch(halign=Gtk.Align.END, hexpand=True)
+        self.attach_next_to(brightness_switch, brightness_label, Gtk.PositionType.RIGHT, 1, 1)
+        
+        level_label = Gtk.Label(_("Brightness Level"), halign=Gtk.Align.START)
+        self.attach(level_label, 0, 2, 1, 1)
+        brightness_level = Gtk.SpinButton.new_with_range(0.0, 100.0, 1.0)
+        brightness_level.set_value(95.0)
+        self.attach_next_to(brightness_level, level_label, Gtk.PositionType.RIGHT, 1, 1)
 
+        # Bind settings to widget value
+        setting.bind("enable-notification", notify_switch, "active",
+            Gio.SettingsBindFlags.DEFAULT)
+        setting.bind("maximize-brightness", brightness_switch, "active",
+            Gio.SettingsBindFlags.DEFAULT)
+        setting.bind("screen-brightness", brightness_level, "value",
+            Gio.SettingsBindFlags.DEFAULT)
+        
+        self.show_all()
+        
 
 class CaffeineApplet(Budgie.Applet):
     def __init__(self, uuid):
@@ -213,13 +230,15 @@ class CaffeineApplet(Budgie.Applet):
                 Gtk.IconSize.BUTTON)
             self.box.add(self.icon)
 
-        # Change screen brightness
-        self.change_screen_brightness(switch.get_active(),
-                                      self.defaults.get("screen-brightness"))
+        # Change screen brightness if enabled
+        if self.settings.get_boolean("maximize-brightness"):
+            self.change_screen_brightness(switch.get_active(),
+                                          self.defaults.get("screen-brightness"))
 
         # Send notification if enabled
         if self.settings.get_boolean("enable-notification"):
             self.send_notification(switch.get_active(), time)
+            
         self.box.show_all()
 
     def	_on_press(self, box, e):
