@@ -95,6 +95,8 @@ class CaffeineApplet(Budgie.Applet):
         layout.set_border_width(10)
 
         label = Gtk.Label(_("Caffeine Mode"), halign=Gtk.Align.START)
+        label.get_style_context().add_class("title")
+        label.get_style_context().add_class("dim-label")
         layout.add(label)
         self.switch = Gtk.Switch(halign=Gtk.Align.END, hexpand=True)
         layout.attach_next_to(self.switch, label, Gtk.PositionType.RIGHT, 1, 1)
