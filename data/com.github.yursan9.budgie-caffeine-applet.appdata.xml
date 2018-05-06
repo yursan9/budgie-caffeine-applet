@@ -5,6 +5,7 @@
 	<translation type="gettext">budgie-caffeine-applet</translation>
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-2.0+</project_license>
+	<extends>budgie-desktop</extends>
 	<name>Budgie Caffeine Applet</name>
 	<summary>Simple applet to prevent screen dimming on long idle time</summary>
 	<description>
@@ -18,6 +19,7 @@
 			<li>Timer</li>
 			<li>Notification</li>
 			<li>Single click activation with middle mouse button</li>
+			<li>Maximize screen brightness on toogle</li>
 		</ul>
 	</description>
 	<screenshots>
