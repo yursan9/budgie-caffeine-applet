@@ -29,7 +29,7 @@ class BudgieCaffeine(GObject.Object, Budgie.Plugin):
 
 class CaffeineSettings(Gtk.Grid):
     def __init__(self, setting):
-        super().__init__(row_spacing=8)
+        super().__init__(row_spacing=8, column_spacing=6)
         self.setting = setting
 
         label = Gtk.Label(_("Enable Notification"), halign=Gtk.Align.START)
@@ -91,8 +91,8 @@ class CaffeineApplet(Budgie.Applet):
         # Popover
         self.popover = Budgie.Popover.new(self.box)
         self.popover.get_style_context().add_class("caffeine-popover")
-        layout = Gtk.Grid()
-        layout.set_border_width(6)
+        layout = Gtk.Grid(row_spacing=8, column_spacing=6)
+        layout.set_border_width(10)
 
         label = Gtk.Label(_("Caffeine Mode"), halign=Gtk.Align.START)
         layout.add(label)
@@ -100,7 +100,6 @@ class CaffeineApplet(Budgie.Applet):
         layout.attach_next_to(self.switch, label, Gtk.PositionType.RIGHT, 1, 1)
 
         sep = Gtk.Separator()
-        sep.set_margin_top(10)
         layout.attach(sep, 0, 1, 2, 1)
 
         label = Gtk.Label(_("Timer (minutes)"), halign=Gtk.Align.START)
