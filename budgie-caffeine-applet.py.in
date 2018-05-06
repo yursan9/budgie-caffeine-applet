@@ -158,13 +158,16 @@ class CaffeineApplet(Budgie.Applet):
         Variable activate acts as toogle, and variable value provides for
         default brightness value
         """
-        if activate:
-            self.screen_settings.Set('org.gnome.SettingsDaemon.Power.Screen',
-                                     'Brightness',
-                                     self.settings.get_uint("screen-brightness"))
-        else:
-            self.screen_settings.Set('org.gnome.SettingsDaemon.Power.Screen',
-                                     'Brightness', value)
+        try:
+            if activate:
+                self.screen_settings.Set('org.gnome.SettingsDaemon.Power.Screen',
+                                         'Brightness',
+                                         self.settings.get_uint("screen-brightness"))
+            else:
+                self.screen_settings.Set('org.gnome.SettingsDaemon.Power.Screen',
+                                         'Brightness', value)
+        except dbus.exceptions.DBusException:
+            pass
 
     def timer_out(self, time):
         """Reset Caffeine mode and timer value"""
