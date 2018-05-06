@@ -2,57 +2,66 @@
 # Copyright (C) YEAR Yurizal Susanto
 # This file is distributed under the same license as the budgie-caffeine-applet package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: budgie-caffeine-applet 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-22 16:23+0700\n"
+"POT-Creation-Date: 2018-05-06 15:10+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Davidmp <medipas@gmail.com>, 2018\n"
-"Language-Team: Catalan (https://www.transifex.com/yursans-budgie-applets/teams/79144/ca/)\n"
+"Language-Team: Catalan (https://www.transifex.com/yursans-budgie-applets/"
+"teams/79144/ca/)\n"
+"Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: budgie-caffeine-applet.py.in:31
+#: budgie-caffeine-applet.py.in:35
 msgid "Enable Notification"
 msgstr "Habilita les notificacions"
 
-#: budgie-caffeine-applet.py.in:71
+#: budgie-caffeine-applet.py.in:40
+msgid "Maximize Brightness"
+msgstr ""
+
+#: budgie-caffeine-applet.py.in:45
+msgid "Brightness Level"
+msgstr ""
+
+#: budgie-caffeine-applet.py.in:97
 msgid "Caffeine Mode"
 msgstr "Mode de Cafeïna"
 
-#: budgie-caffeine-applet.py.in:79
+#: budgie-caffeine-applet.py.in:107
 msgid "Timer (minutes)"
 msgstr "Temporitzador (minuts)"
 
-#: budgie-caffeine-applet.py.in:106
+#: budgie-caffeine-applet.py.in:144
 msgid "Turn on Caffeine Boost"
 msgstr "Activa l'impuls de Cafeïna"
 
-#: budgie-caffeine-applet.py.in:109
+#: budgie-caffeine-applet.py.in:146
 #, python-brace-format
 msgid "{time} minutes"
 msgstr "{time} minuts"
 
-#: budgie-caffeine-applet.py.in:109
+#: budgie-caffeine-applet.py.in:146
 msgid "a minute"
 msgstr "un minut"
 
-#: budgie-caffeine-applet.py.in:110
+#: budgie-caffeine-applet.py.in:147
 #, python-brace-format
 msgid "Will turn off in {duration}"
 msgstr "Es desactivarà d'aquí a {duration}"
 
-#: budgie-caffeine-applet.py.in:112
+#: budgie-caffeine-applet.py.in:149
 #, python-brace-format
 msgid "{app} automatically turn on Caffeine Mode"
 msgstr "{app} activa automàticament el mode de Caffeïna"
 
-#: budgie-caffeine-applet.py.in:115
+#: budgie-caffeine-applet.py.in:152
 msgid "Turn off Caffeine Boost"
 msgstr "Desactiva l'impuls de Cafeïna"
