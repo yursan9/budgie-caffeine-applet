@@ -32,11 +32,11 @@ class CaffeineSettings(Gtk.Grid):
         super().__init__(row_spacing=8, column_spacing=6)
         self.setting = setting
 
-        label = Gtk.Label(_("Enable Notification"), halign=Gtk.Align.START)
-        self.add(label)
+        notify_label = Gtk.Label(_("Enable Notification"), halign=Gtk.Align.START)
+        self.add(notify_label)
         notify_switch = Gtk.Switch(halign=Gtk.Align.END, hexpand=True)
-        self.attach(notify_switch, 1, 0, 1, 1)
-
+        self.attach_next_to(notify_switch, notify_label, Gtk.PositionType.RIGHT, 1, 1)
+        
         brightness_label = Gtk.Label(_("Maximize Brightness"), halign=Gtk.Align.START)
         self.attach(brightness_label, 0, 1, 1, 1)
         brightness_switch = Gtk.Switch(halign=Gtk.Align.END, hexpand=True)
