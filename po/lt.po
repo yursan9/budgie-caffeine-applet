@@ -6,11 +6,11 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: budgie-caffeine-applet 0.1.0\n"
+"Project-Id-Version: budgie-caffeine-applet 0.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-06 15:10+0700\n"
+"POT-Creation-Date: 2018-05-12 16:53+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Moo <moose@mail.ru>, 2017\n"
+"Last-Translator: Moo, 2018\n"
 "Language-Team: Lithuanian (https://www.transifex.com/yursans-budgie-applets/"
 "teams/79144/lt/)\n"
 "Language: lt\n"
@@ -26,11 +26,11 @@ msgstr "Įjungti pranešimą"
 
 #: budgie-caffeine-applet.py.in:40
 msgid "Maximize Brightness"
-msgstr ""
+msgstr "Padidinti ryškumą"
 
 #: budgie-caffeine-applet.py.in:45
 msgid "Brightness Level"
-msgstr ""
+msgstr "Ryškumo lygis"
 
 #: budgie-caffeine-applet.py.in:97
 msgid "Caffeine Mode"
