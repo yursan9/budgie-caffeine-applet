@@ -6,11 +6,11 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: budgie-caffeine-applet 0.1.0\n"
+"Project-Id-Version: budgie-caffeine-applet 0.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-06 15:10+0700\n"
+"POT-Creation-Date: 2018-05-12 16:53+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Pierre-Yves <kyrios@skynet.be>, 2017\n"
+"Last-Translator: Arkelis <guillaume2.fayard@wanadoo.fr>, 2018\n"
 "Language-Team: French (France) (https://www.transifex.com/yursans-budgie-"
 "applets/teams/79144/fr_FR/)\n"
 "Language: fr_FR\n"
@@ -25,11 +25,11 @@ msgstr "Activer les notifications"
 
 #: budgie-caffeine-applet.py.in:40
 msgid "Maximize Brightness"
-msgstr ""
+msgstr "Maximiser la luminosité"
 
 #: budgie-caffeine-applet.py.in:45
 msgid "Brightness Level"
-msgstr ""
+msgstr "Niveau de luminosité"
 
 #: budgie-caffeine-applet.py.in:97
 msgid "Caffeine Mode"
@@ -64,4 +64,4 @@ msgstr "Mode caféine automatiquement activé par {app} "
 
 #: budgie-caffeine-applet.py.in:152
 msgid "Turn off Caffeine Boost"
-msgstr "Terminer l'injection de caféine"
+msgstr "Arrêter l'injection de caféine"

@@ -6,62 +6,62 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: budgie-caffeine-applet 0.2.0\n"
+"Project-Id-Version: budgie-caffeine-applet 0.1.5\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-12 16:53+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Andi <andipabst@t-online.de>, 2017\n"
-"Language-Team: German (Germany) (https://www.transifex.com/yursans-budgie-"
-"applets/teams/79144/de_DE/)\n"
-"Language: de_DE\n"
+"Last-Translator: Kaizhao Zhang <zhangkaizhao@gmail.com>, 2018\n"
+"Language-Team: Chinese (China) (https://www.transifex.com/yursans-budgie-"
+"applets/teams/79144/zh_CN/)\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: budgie-caffeine-applet.py.in:35
 msgid "Enable Notification"
-msgstr "Benachrichtigungen aktivieren"
+msgstr "开启通知"
 
 #: budgie-caffeine-applet.py.in:40
 msgid "Maximize Brightness"
-msgstr ""
+msgstr "最大化亮度"
 
 #: budgie-caffeine-applet.py.in:45
 msgid "Brightness Level"
-msgstr ""
+msgstr "亮度级别"
 
 #: budgie-caffeine-applet.py.in:97
 msgid "Caffeine Mode"
-msgstr "Koffein Modus"
+msgstr "煮咖啡模式"
 
 #: budgie-caffeine-applet.py.in:107
 msgid "Timer (minutes)"
-msgstr "Timer (Minuten)"
+msgstr "定时器（分钟）"
 
 #: budgie-caffeine-applet.py.in:144
 msgid "Turn on Caffeine Boost"
-msgstr "Koffein Boost aktivieren"
+msgstr "开始煮咖啡"
 
 #: budgie-caffeine-applet.py.in:146
 #, python-brace-format
 msgid "{time} minutes"
-msgstr "{time} Minuten"
+msgstr "{time} 分钟"
 
 #: budgie-caffeine-applet.py.in:146
 msgid "a minute"
-msgstr "Eine Minute"
+msgstr "一分钟"
 
 #: budgie-caffeine-applet.py.in:147
 #, python-brace-format
 msgid "Will turn off in {duration}"
-msgstr "Schaltet in {duration} Minuten ab"
+msgstr "将在{duration}之后停止"
 
 #: budgie-caffeine-applet.py.in:149
 #, python-brace-format
 msgid "{app} automatically turn on Caffeine Mode"
-msgstr "Koffein Modus in {app} automatisch aktivieren"
+msgstr "{app} 自动开启煮咖啡模式"
 
 #: budgie-caffeine-applet.py.in:152
 msgid "Turn off Caffeine Boost"
-msgstr "Koffein Boost deaktivieren"
+msgstr "停止煮咖啡"

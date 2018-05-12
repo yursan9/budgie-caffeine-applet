@@ -6,11 +6,11 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: budgie-caffeine-applet 0.1.0\n"
+"Project-Id-Version: budgie-caffeine-applet 0.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-06 15:10+0700\n"
+"POT-Creation-Date: 2018-05-12 16:53+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Yurizal Susanto <rizal.sagi@gmail.com>, 2017\n"
+"Last-Translator: Yurizal Susanto <rizal.sagi@gmail.com>, 2018\n"
 "Language-Team: Indonesian (https://www.transifex.com/yursans-budgie-applets/"
 "teams/79144/id/)\n"
 "Language: id\n"
@@ -25,11 +25,11 @@ msgstr "Aktifkan Notifikasi"
 
 #: budgie-caffeine-applet.py.in:40
 msgid "Maximize Brightness"
-msgstr ""
+msgstr "Maksimalkan Kecerahan"
 
 #: budgie-caffeine-applet.py.in:45
 msgid "Brightness Level"
-msgstr ""
+msgstr "Tingkat Kecerahan"
 
 #: budgie-caffeine-applet.py.in:97
 msgid "Caffeine Mode"
