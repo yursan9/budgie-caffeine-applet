@@ -1,4 +1,8 @@
-# Budgie Caffeine Applet
+# Budgie Caffeine Applet (Archieved)
+
+> Note: Budgie Caffeine Applet become [official part of Budgie Desktop](https://github.com/solus-project/budgie-desktop/commit/e3f69e25a33df95bac09f00dc7e6e6a0c24014cd). In later version of Budgie, you can add the applet without installing the applet from this repository.
+>
+> It's been a good run! Thank you for everyone who contribute and report on issues to this applet!
 
 Simple applet to prevent screen dimming on long idle time.
 
